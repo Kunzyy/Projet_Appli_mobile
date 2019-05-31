@@ -58,13 +58,13 @@ public class MainActivity extends AppCompatActivity {
 
             //Récupération du device et du nom de la lampe si l'activité de recherche a été bien éxécuté
             if (getIntent().hasExtra("devicePaired")) {
-                //Setup de la liste d'affichage des lampes
+
                 listLamp.clear();
                 macAdresses.clear();
+                //Setup de la liste d'affichage des lampes
                 readforListView(listLamp,macAdresses);
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(),android.R.layout.simple_list_item_1, listLamp);
                 mListView.setAdapter(adapter);
-
                 if (getIntent().getBooleanExtra("devicePaired", false)) {
                     device = getIntent().getExtras().getParcelable("btDevice");
                     nameLamp = getIntent().getStringExtra("nameLamp");
@@ -95,6 +95,13 @@ public class MainActivity extends AppCompatActivity {
                 btnLampActivity.setVisibility(View.INVISIBLE);
             }
 
+            //Setup de la liste d'affichage des lampes
+            listLamp.clear();
+            macAdresses.clear();
+            readforListView(listLamp,macAdresses);
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(),android.R.layout.simple_list_item_1, listLamp);
+            mListView.setAdapter(adapter);
+
             if(listLamp.size() > 0)
             {
                 mListView.setVisibility(View.VISIBLE);
@@ -107,13 +114,6 @@ public class MainActivity extends AppCompatActivity {
                 textList1.setVisibility(View.INVISIBLE);
                 textList2.setVisibility(View.INVISIBLE);
             }
-
-            //Setup de la liste d'affichage des lampes
-            listLamp.clear();
-            macAdresses.clear();
-            readforListView(listLamp,macAdresses);
-            ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(),android.R.layout.simple_list_item_1, listLamp);
-            mListView.setAdapter(adapter);
 
             //Lancement de l'activité de recherche d'appareils/modules
             btnBtActivity.setOnClickListener(new View.OnClickListener() {

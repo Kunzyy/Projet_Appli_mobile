@@ -53,8 +53,8 @@ public class DevicesBDD {
         bdd.execSQL(request);
     }
 
-    public void deleteDevice(String nameDevice) {
-        String request = "DELETE FROM " + TABLE_DEVICES + " WHERE " + COL_NAME_DEVICE +" = '" + nameDevice +"' ;";
+    public void deleteDevice(String nameLamp) {
+        String request = "DELETE FROM " + TABLE_DEVICES + " WHERE " + COL_NAME_LAMP +" = '" + nameLamp +"' ;";
         System.out.println(request);
         bdd.execSQL(request);
     }

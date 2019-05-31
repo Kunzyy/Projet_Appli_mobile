@@ -156,7 +156,7 @@ public class GestionLamp extends AppCompatActivity {
                 if(connected == 1) {
                     sendData("o");
                 }
-                deleteDevice(device);
+                deleteDevice(nameLamp);
                 close();
                 Log.d(TAG, "onItemClick: Suppresion Lampe - End activity");
                 Intent intent = new Intent(GestionLamp.this, MainActivity.class);
@@ -319,11 +319,11 @@ public class GestionLamp extends AppCompatActivity {
         devicesBDD.close();
     }
 
-    private void deleteDevice(BluetoothDevice device)
+    private void deleteDevice(String nameLamp)
     {
         DevicesBDD devicesBDD = new DevicesBDD(this);
         devicesBDD.openForWrite();
-        devicesBDD.deleteDevice(device.getName());
+        devicesBDD.deleteDevice(nameLamp);
         devicesBDD.close();
     }
 
